@@ -3,15 +3,21 @@
 Turn a Vite web app into a sideloadable Android app, with durable local data.
 
 > **Status: pre-alpha.** APIs, package names, and the APK build flow are still changing.
-> Porth is not published on npm yet.
 
 ## Packages
 
 | Package | Purpose |
 | --- | --- |
-| [`porth`](https://github.com/MuneerAhmed03/porth-core) | Local storage and SQLite for browser and Android, including optional Drizzle support |
-| `porth-cli` | `porth build`, `porth dev`, `porth dev-build`, and `porth drizzle bundle` |
+| [`porth-core`](https://github.com/MuneerAhmed03/porth-core) | Local storage and SQLite for browser and Android, including optional Drizzle support |
+| [`porth-cli`](https://www.npmjs.com/package/porth-cli) | `porth build`, `porth dev`, `porth dev-build`, and `porth drizzle bundle` |
 | [`porth-shell`](https://github.com/MuneerAhmed03/porth-shell) | Android WebView shell, JavaScript bridge, and Docker APK builder |
+
+```bash
+npm install porth-core
+npm install -g porth-cli   # or: npx porth-cli <command>
+```
+
+Both npm names are reserved at `0.0.1`; the first real release will be `0.1.0`.
 
 ## Repository layout
 

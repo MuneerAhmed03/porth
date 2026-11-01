@@ -1,6 +1,6 @@
 ---
 name: porth-storage-layer-vite
-description: Build a production-ready storage layer for any Vite app using Porth, including architecture, bootstrapping, repository design, and implementation with either raw SQL (porth DB.query) or Drizzle (porth/drizzle). Use this skill whenever the user asks to set up local persistence, offline data, SQLite schema/migrations, key-value storage, or data access patterns in a Porth + Vite app, even if they do not explicitly mention this skill.
+description: Build a production-ready storage layer for any Vite app using Porth, including architecture, bootstrapping, repository design, and implementation with either raw SQL (porth-core DB.query) or Drizzle (porth-core/drizzle). Use this skill whenever the user asks to set up local persistence, offline data, SQLite schema/migrations, key-value storage, or data access patterns in a Porth + Vite app, even if they do not explicitly mention this skill.
 ---
 
 # Porth storage layer for Vite apps

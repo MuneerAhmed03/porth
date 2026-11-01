@@ -1,11 +1,11 @@
-# Raw SQL setup (`porth` + `DB.query`)
+# Raw SQL setup (`porth-core` + `DB.query`)
 
 Use this path for simple apps or when you want full SQL control.
 
 ## Install
 
 ```bash
-npm install porth
+npm install porth-core
 ```
 
 ## Recommended file layout
@@ -22,7 +22,7 @@ src/data/
 
 ```ts
 // src/data/bootstrap.ts
-import { DB } from 'porth'
+import { DB } from 'porth-core'
 
 let bootstrapPromise: Promise<void> | null = null
 
@@ -51,7 +51,7 @@ export function bootstrapDataLayer(): Promise<void> {
 
 ```ts
 // src/data/repositories/noteRepository.ts
-import { DB } from 'porth'
+import { DB } from 'porth-core'
 import { bootstrapDataLayer } from '../bootstrap'
 
 export interface Note {
@@ -98,7 +98,7 @@ export async function createNote(input: { title: string; body: string }): Promis
 
 ```ts
 // src/data/storage/preferences.ts
-import { Storage } from 'porth'
+import { Storage } from 'porth-core'
 
 const THEME_KEY = 'app:preferences:theme'
 

@@ -94,7 +94,7 @@ export async function devBuildCommand(options: CliOptions): Promise<void> {
     console.log('  adb install ./dist/app-dev.apk');
     console.log('');
     console.log('Then start developing:');
-    console.log('  npx porth dev');
+    console.log('  npx porth-cli dev');
     console.log('');
     console.log(`Your app will load ${devUrl} and live-reload. Keep your phone on the same WiFi.`);
   } catch (error) {

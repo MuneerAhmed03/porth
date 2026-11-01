@@ -1,11 +1,11 @@
-# Drizzle setup (`porth/drizzle`)
+# Drizzle setup (`porth-core/drizzle`)
 
 Use this path for larger schemas and stronger type safety.
 
 ## Install
 
 ```bash
-npm install porth drizzle-orm drizzle-kit
+npm install porth-core drizzle-orm drizzle-kit
 ```
 
 ## Recommended file layout
@@ -39,7 +39,7 @@ export const schema = { notes }
 
 ```ts
 // src/data/db/client.ts
-import { createPorthDrizzle } from 'porth/drizzle'
+import { createPorthDrizzle } from 'porth-core/drizzle'
 import migrations from './migrations.generated'
 import { schema } from './schema'
 
@@ -52,12 +52,12 @@ Generate Drizzle migrations first, then bundle them for Porth's browser/Android 
 
 ```bash
 npx drizzle-kit generate
-npx porth drizzle bundle
+npx porth-cli drizzle bundle
 ```
 
 The bundler writes `src/data/db/migrations.generated.ts` by default. It uses `.porth/drizzle-bundle-state.json` to skip parsing and writing when Drizzle inputs have not changed.
 
-`porth/drizzle` accepts migration objects shaped like:
+`porth-core/drizzle` accepts migration objects shaped like:
 - `sql: string[]`
 - `folderMillis: number`
 - `hash: string`
