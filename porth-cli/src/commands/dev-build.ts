@@ -5,7 +5,7 @@ import ora, { type Ora } from 'ora';
 import { DEFAULT_BUILDER_IMAGE } from '../utils/builderConfig.js';
 import { bundleDrizzleMigrations } from '../utils/drizzleMigrations.js';
 import { getLocalIP } from '../utils/network.js';
-import { loadOrCreateConfig } from '../utils/portlConfig.js';
+import { loadOrCreateConfig } from '../utils/porthConfig.js';
 import { getVersionInfo } from '../utils/versioning.js';
 import {
   ensureDockerReady,
@@ -24,7 +24,7 @@ interface CliOptions {
   webviewDebug?: boolean;
 }
 
-const DEV_WEB_DIST_DIR = path.join('.portl', 'dev-dist');
+const DEV_WEB_DIST_DIR = path.join('.porth', 'dev-dist');
 
 export async function devBuildCommand(options: CliOptions): Promise<void> {
   const cwd = process.cwd();
@@ -33,7 +33,7 @@ export async function devBuildCommand(options: CliOptions): Promise<void> {
   try {
     const packageJsonPath = path.join(cwd, 'package.json');
     if (!(await fs.pathExists(packageJsonPath))) {
-      throw new Error('Run portl from your project root.');
+      throw new Error('Run porth from your project root.');
     }
 
     const packageJson = (await fs.readJSON(packageJsonPath)) as ProjectPackageJson;
@@ -61,7 +61,7 @@ export async function devBuildCommand(options: CliOptions): Promise<void> {
       cwd,
       webDistDir,
       packageName: config.packageName,
-      appLabel: packageJson.name ?? 'portl-app',
+      appLabel: packageJson.name ?? 'porth-app',
       versionCode: versionInfo.versionCode,
       versionName: versionInfo.versionName,
       webViewDebug: options.webviewDebug !== false,
@@ -94,7 +94,7 @@ export async function devBuildCommand(options: CliOptions): Promise<void> {
     console.log('  adb install ./dist/app-dev.apk');
     console.log('');
     console.log('Then start developing:');
-    console.log('  npx portl dev');
+    console.log('  npx porth dev');
     console.log('');
     console.log(`Your app will load ${devUrl} and live-reload. Keep your phone on the same WiFi.`);
   } catch (error) {
@@ -117,7 +117,7 @@ async function prepareDevWebDist(cwd: string): Promise<string> {
   await fs.emptyDir(webDistDir);
   await fs.writeFile(
     path.join(webDistDir, 'index.html'),
-    '<!doctype html><html><head><meta charset="utf-8"><title>Portl Dev</title></head><body></body></html>\n',
+    '<!doctype html><html><head><meta charset="utf-8"><title>Porth Dev</title></head><body></body></html>\n',
     'utf8',
   );
   return webDistDir;

@@ -1,4 +1,4 @@
-# Design principles for Portl storage layers
+# Design principles for Porth storage layers
 
 ## 1. Split by responsibility
 
@@ -22,7 +22,7 @@
 
 - Keep schema definitions in one place.
 - Use idempotent creation/migration logic.
-- For Drizzle, prefer `createPortlDrizzle({ schema, migrations })`; it runs migrations once before the first query.
+- For Drizzle, prefer `createPorthDrizzle({ schema, migrations })`; it runs migrations once before the first query.
 
 ## 5. Design for evolution
 

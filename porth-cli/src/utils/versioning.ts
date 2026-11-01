@@ -1,4 +1,4 @@
-import type { PortlConfig } from './portlConfig.js';
+import type { PorthConfig } from './porthConfig.js';
 
 interface VersionPackageJson {
   version?: string;
@@ -11,7 +11,7 @@ export interface VersionInfo {
 
 export function getVersionInfo(
   packageJson: VersionPackageJson,
-  config: PortlConfig,
+  config: PorthConfig,
 ): VersionInfo {
   return {
     versionCode: config.versionCode,

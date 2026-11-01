@@ -1,11 +1,11 @@
 export function derivePackageName(name: string): string {
   const sanitized = name.toLowerCase().replace(/[^a-z0-9]/g, '');
   if (!sanitized) {
-    return 'com.portl.app';
+    return 'com.porth.app';
   }
 
   const segment = /^[a-z]/.test(sanitized) ? sanitized : `app${sanitized}`;
-  return `com.portl.${segment.slice(0, 54)}`;
+  return `com.porth.${segment.slice(0, 54)}`;
 }
 
 export function validatePackageName(packageName: string): void {

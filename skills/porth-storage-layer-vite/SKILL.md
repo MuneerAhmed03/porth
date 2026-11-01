@@ -1,11 +1,11 @@
 ---
-name: portl-storage-layer-vite
-description: Build a production-ready storage layer for any Vite app using Portl, including architecture, bootstrapping, repository design, and implementation with either raw SQL (portl DB.query) or Drizzle (portl/drizzle). Use this skill whenever the user asks to set up local persistence, offline data, SQLite schema/migrations, key-value storage, or data access patterns in a Portl + Vite app, even if they do not explicitly mention this skill.
+name: porth-storage-layer-vite
+description: Build a production-ready storage layer for any Vite app using Porth, including architecture, bootstrapping, repository design, and implementation with either raw SQL (porth DB.query) or Drizzle (porth/drizzle). Use this skill whenever the user asks to set up local persistence, offline data, SQLite schema/migrations, key-value storage, or data access patterns in a Porth + Vite app, even if they do not explicitly mention this skill.
 ---
 
-# Portl storage layer for Vite apps
+# Porth storage layer for Vite apps
 
-Use this skill to implement a durable, maintainable data layer in Vite apps that run in browser and Android via Portl.
+Use this skill to implement a durable, maintainable data layer in Vite apps that run in browser and Android via Porth.
 
 Read these references as needed:
 - `references/design-principles.md` for architecture and rules

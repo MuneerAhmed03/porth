@@ -1,0 +1,6 @@
+[submodule "porth-core"]
+	path = porth-core
+	url = https://github.com/MuneerAhmed03/porth-core.git
+[submodule "porth-shell"]
+	path = porth-shell
+	url = https://github.com/MuneerAhmed03/porth-shell.git

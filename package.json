@@ -1,15 +1,19 @@
 {
-  "name": "portl-monorepo",
+  "name": "porth-monorepo",
   "version": "0.1.0",
   "private": true,
-  "description": "Portl monorepo",
+  "description": "Porth monorepo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuneerAhmed03/porth.git"
+  },
   "workspaces": [
-    "portl-core",
-    "portl-cli"
+    "porth-core",
+    "porth-cli"
   ],
   "scripts": {
-    "build": "npm run build --workspace=portl-core",
-    "dev": "npm run dev --workspace=portl-core",
-    "test": "npm run test --workspace=portl-core"
+    "build": "npm run build --workspace=porth-core",
+    "dev": "npm run dev --workspace=porth-core",
+    "test": "npm run test --workspace=porth-core"
   }
 }

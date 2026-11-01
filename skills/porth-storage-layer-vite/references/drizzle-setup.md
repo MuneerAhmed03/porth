@@ -1,11 +1,11 @@
-# Drizzle setup (`portl/drizzle`)
+# Drizzle setup (`porth/drizzle`)
 
 Use this path for larger schemas and stronger type safety.
 
 ## Install
 
 ```bash
-npm install portl drizzle-orm drizzle-kit
+npm install porth drizzle-orm drizzle-kit
 ```
 
 ## Recommended file layout
@@ -39,25 +39,25 @@ export const schema = { notes }
 
 ```ts
 // src/data/db/client.ts
-import { createPortlDrizzle } from 'portl/drizzle'
+import { createPorthDrizzle } from 'porth/drizzle'
 import migrations from './migrations.generated'
 import { schema } from './schema'
 
-export const db = createPortlDrizzle({ schema, migrations })
+export const db = createPorthDrizzle({ schema, migrations })
 ```
 
 ## Migrations and bootstrap
 
-Generate Drizzle migrations first, then bundle them for Portl's browser/Android runtime:
+Generate Drizzle migrations first, then bundle them for Porth's browser/Android runtime:
 
 ```bash
 npx drizzle-kit generate
-npx portl drizzle bundle
+npx porth drizzle bundle
 ```
 
-The bundler writes `src/data/db/migrations.generated.ts` by default. It uses `.portl/drizzle-bundle-state.json` to skip parsing and writing when Drizzle inputs have not changed.
+The bundler writes `src/data/db/migrations.generated.ts` by default. It uses `.porth/drizzle-bundle-state.json` to skip parsing and writing when Drizzle inputs have not changed.
 
-`portl/drizzle` accepts migration objects shaped like:
+`porth/drizzle` accepts migration objects shaped like:
 - `sql: string[]`
 - `folderMillis: number`
 - `hash: string`
@@ -65,7 +65,7 @@ The bundler writes `src/data/db/migrations.generated.ts` by default. It uses `.p
 - `idx?: number`
 - `tag?: string`
 
-`createPortlDrizzle({ schema, migrations })` runs migrations lazily before the first query, so repositories can use the exported `db` like a normal Drizzle client.
+`createPorthDrizzle({ schema, migrations })` runs migrations lazily before the first query, so repositories can use the exported `db` like a normal Drizzle client.
 
 `RETURNING` queries are passed through to SQLite. Browser `sql.js` supports them when its SQLite engine does; Android support depends on the SQLite version available on the device.
 
@@ -96,7 +96,7 @@ Use `Storage` for app preferences and lightweight keys, even when relational dat
 
 ## Drizzle-mode review checklist
 
-1. `db` is created with `createPortlDrizzle({ schema, migrations })`.
+1. `db` is created with `createPorthDrizzle({ schema, migrations })`.
 2. Migrations are committed and versioned with the app.
 3. Repositories hide Drizzle specifics from UI components.
 4. `Storage` wrappers are typed and namespaced.

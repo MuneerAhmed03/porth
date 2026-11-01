@@ -10,7 +10,7 @@ export async function devCommand(): Promise<void> {
   try {
     const packageJsonPath = path.join(cwd, 'package.json');
     if (!(await fs.pathExists(packageJsonPath))) {
-      throw new Error('Run portl from your project root.');
+      throw new Error('Run porth from your project root.');
     }
 
     const vitePath = path.join(cwd, 'node_modules', '.bin', 'vite');

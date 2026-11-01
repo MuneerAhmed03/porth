@@ -8,7 +8,7 @@ import { drizzleBundleCommand } from './commands/drizzle.js';
 const program = new Command();
 
 program
-  .name('portl')
+  .name('porth')
   .description('Turn your web app into an Android app')
   .version('0.1.0');
 
@@ -39,7 +39,7 @@ const drizzle = program.command('drizzle').description('Drizzle integration util
 
 drizzle
   .command('bundle')
-  .description('Bundle Drizzle Kit migrations into a Portl runtime module')
+  .description('Bundle Drizzle Kit migrations into a Porth runtime module')
   .option('--migrations <dir>', 'Drizzle migrations directory', 'drizzle')
   .option('--out <file>', 'Generated migrations module', 'src/data/db/migrations.generated.ts')
   .option('--check', 'Fail if the generated migrations module is stale')

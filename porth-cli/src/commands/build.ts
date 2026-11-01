@@ -11,7 +11,7 @@ import {
 } from '../utils/builderConfig.js';
 import { bundleDrizzleMigrations } from '../utils/drizzleMigrations.js';
 import { ensureKeystore, getDefaultKeystoreSigningConfig } from '../utils/keystore.js';
-import { loadOrCreateConfig, saveConfig, type PortlConfig } from '../utils/portlConfig.js';
+import { loadOrCreateConfig, saveConfig, type PorthConfig } from '../utils/porthConfig.js';
 import { getVersionInfo } from '../utils/versioning.js';
 
 interface CliOptions {
@@ -50,8 +50,8 @@ export interface BuilderIO {
   outputDir: string;
 }
 
-const CONTAINER_BUILD_DIR = path.join('.portl', 'container-build');
-const DEFAULT_KEYSTORE_RELATIVE_PATH = path.join('.portl', 'keystore', 'release.p12').replaceAll('\\', '/');
+const CONTAINER_BUILD_DIR = path.join('.porth', 'container-build');
+const DEFAULT_KEYSTORE_RELATIVE_PATH = path.join('.porth', 'keystore', 'release.p12').replaceAll('\\', '/');
 
 export async function buildCommand(options: CliOptions): Promise<void> {
   const cwd = process.cwd();
@@ -60,7 +60,7 @@ export async function buildCommand(options: CliOptions): Promise<void> {
   try {
     const packageJsonPath = path.join(cwd, 'package.json');
     if (!(await fs.pathExists(packageJsonPath))) {
-      throw new Error('Run portl from your project root.');
+      throw new Error('Run porth from your project root.');
     }
 
     const packageJson = (await fs.readJSON(packageJsonPath)) as ProjectPackageJson;
@@ -93,7 +93,7 @@ export async function buildCommand(options: CliOptions): Promise<void> {
       cwd,
       webDistDir,
       packageName: config.packageName,
-      appLabel: packageJson.name ?? 'portl-app',
+      appLabel: packageJson.name ?? 'porth-app',
       versionCode: versionInfo.versionCode,
       versionName: versionInfo.versionName,
       webViewDebug: options.webviewDebug === true,
@@ -151,7 +151,7 @@ export async function ensureDockerReady(): Promise<void> {
     await execa('docker', ['--version'], { stdio: 'pipe' });
   } catch {
     throw new Error(
-      'Docker is required for portl build. Install Docker Desktop/Engine and ensure "docker" is available in PATH.',
+      'Docker is required for porth build. Install Docker Desktop/Engine and ensure "docker" is available in PATH.',
     );
   }
 
@@ -259,7 +259,7 @@ export async function prepareBuilderInput(params: {
   return { inputDir, outputDir };
 }
 
-export async function resolveKeystorePath(cwd: string, config: PortlConfig): Promise<string> {
+export async function resolveKeystorePath(cwd: string, config: PorthConfig): Promise<string> {
   const configuredPath = path.resolve(cwd, config.keystorePath);
   if (await fs.pathExists(configuredPath)) {
     return configuredPath;
@@ -270,7 +270,7 @@ export async function resolveKeystorePath(cwd: string, config: PortlConfig): Pro
     throw new Error(`Configured keystore not found: ${config.keystorePath}`);
   }
 
-  await ensureKeystore(path.join(cwd, '.portl'));
+  await ensureKeystore(path.join(cwd, '.porth'));
   if (!(await fs.pathExists(configuredPath))) {
     throw new Error(`Keystore could not be created at ${config.keystorePath}`);
   }
