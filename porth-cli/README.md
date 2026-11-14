@@ -31,7 +31,7 @@ porth drizzle bundle
 - A locally built or published Porth builder image
 
 ```bash
-porth build --builder-image ghcr.io/YOUR_ACCOUNT/porth-builder:0.1.0
+porth build --builder-image ghcr.io/YOUR_ACCOUNT/porth-builder:0.2.0
 ```
 
 ## App configuration
