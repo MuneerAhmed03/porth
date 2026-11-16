@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { buildCommand } from './commands/build.js';
 import { devCommand } from './commands/dev.js';
 import { devBuildCommand } from './commands/dev-build.js';
+import { doctorCommand } from './commands/doctor.js';
 import { drizzleBundleCommand } from './commands/drizzle.js';
 
 const program = new Command();
@@ -34,6 +35,11 @@ program
   .option('--no-pull', 'Skip docker pull and use the local builder image cache')
   .option('--no-webview-debug', 'Disable WebView remote debugging in the dev APK')
   .action(devBuildCommand);
+
+program
+  .command('doctor')
+  .description('Diagnose your Porth environment (run when porth build fails)')
+  .action(doctorCommand);
 
 const drizzle = program.command('drizzle').description('Drizzle integration utilities');
 

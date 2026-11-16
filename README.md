@@ -44,6 +44,13 @@ porth/
 - `porth build` builds a signed production APK inside a Dockerized Android builder.
 - `porth drizzle bundle` converts Drizzle Kit migrations into a runtime module for the browser and Android.
 
+## Runtime
+
+The web app is served from the WebView's web root (`https://appassets.androidplatform.net/`), so a
+default Vite `base: '/'` works as-is: root-absolute asset URLs, lazy-loaded chunks, and client-side
+routes all resolve. Extension-less navigations fall back to `index.html` (SPA routing), and external
+links open in the system browser.
+
 ## Current limitations
 
 - The default Docker builder image is not published yet. Until it is, pass `--builder-image` with a locally built image.

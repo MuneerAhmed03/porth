@@ -164,7 +164,7 @@ export async function ensureDockerReady(): Promise<void> {
 
 export async function pullBuilderImage(image: string): Promise<void> {
   try {
-    await execa('docker', ['pull', image], { stdio: 'pipe' });
+    await execa('docker', ['pull', '--platform', 'linux/amd64', image], { stdio: 'pipe' });
   } catch (error) {
     if (isExecaError(error)) {
       if (error.stdout) {
@@ -182,6 +182,8 @@ export async function runBuilderContainer(image: string, io: BuilderIO): Promise
   const dockerArgs = [
     'run',
     '--rm',
+    '--platform',
+    'linux/amd64',
     '--volume',
     `${io.inputDir}:${BUILDER_INPUT_CONTAINER_DIR}:ro`,
     '--volume',

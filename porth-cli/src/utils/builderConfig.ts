@@ -1,4 +1,4 @@
-export const DEFAULT_BUILDER_IMAGE = 'ghcr.io/muneerahmed03/porth-builder:0.1.0';
+export const DEFAULT_BUILDER_IMAGE = 'ghcr.io/muneerahmed03/porth-builder:0.2.0';
 
 export const BUILDER_INPUT_CONTAINER_DIR = '/work/input';
 export const BUILDER_OUTPUT_CONTAINER_DIR = '/work/output';
