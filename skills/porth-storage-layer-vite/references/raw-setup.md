@@ -1,4 +1,4 @@
-# Raw SQL setup (`porth-core` + `DB.query`)
+# Raw SQL setup (`porth-core` + `DB`)
 
 Use this path for simple apps or when you want full SQL control.
 
@@ -29,7 +29,7 @@ let bootstrapPromise: Promise<void> | null = null
 export function bootstrapDataLayer(): Promise<void> {
   if (!bootstrapPromise) {
     bootstrapPromise = (async () => {
-      await DB.query(`
+      await DB.exec(`
         CREATE TABLE IF NOT EXISTS notes (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           title TEXT NOT NULL,
@@ -38,7 +38,7 @@ export function bootstrapDataLayer(): Promise<void> {
         )
       `)
 
-      await DB.query(
+      await DB.exec(
         'CREATE INDEX IF NOT EXISTS idx_notes_created_at ON notes(created_at)'
       )
     })()
@@ -79,7 +79,7 @@ function mapRow(row: NoteRow): Note {
 
 export async function listNotes(): Promise<Note[]> {
   await bootstrapDataLayer()
-  const rows = await DB.query<NoteRow[]>(
+  const rows = await DB.all<NoteRow[]>(
     'SELECT id, title, body, created_at FROM notes ORDER BY created_at DESC'
   )
   return rows.map(mapRow)
@@ -87,7 +87,7 @@ export async function listNotes(): Promise<Note[]> {
 
 export async function createNote(input: { title: string; body: string }): Promise<void> {
   await bootstrapDataLayer()
-  await DB.query(
+  await DB.insert(
     'INSERT INTO notes (title, body, created_at) VALUES (?, ?, ?)',
     [input.title, input.body, Date.now()]
   )
